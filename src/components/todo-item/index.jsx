@@ -20,9 +20,9 @@ const TodoText = styled.span`
   }};
 `
 
-export const TodoItem = ({ id, text, isDone, onToggleTodo }) => {
+export const TodoItem = ({ id, text, isDone }) => {
   const handleToggleTodo = () => {
-    onToggleTodo?.(id)
+    
   }
 
   return (

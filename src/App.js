@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 import { TodoList } from './components/todo-list'
-import { startTodolist } from './data'
-import { useTodolist } from './hooks/useTodolist'
 
 const StyledTodolist = styled(TodoList)`
   background-color: pink;
@@ -9,8 +7,6 @@ const StyledTodolist = styled(TodoList)`
 `
 
 function App() {
-  const { todos, toggleTodo } = useTodolist(startTodolist)
-  
   const getOverdueTodos = () => {
     const today = new Date()
     return todos.filter(
@@ -33,17 +29,14 @@ function App() {
       <StyledTodolist
         title="Overdue"
         items={getOverdueTodos()}
-        onToggleTodo={toggleTodo}
       />
       <StyledTodolist
         title="Actual"
         items={getActualTodos()}
-        onToggleTodo={toggleTodo}
       />
       <StyledTodolist
         title="Completed"
         items={getCompletedTodos()}
-        onToggleTodo={toggleTodo}
       />
     </div>
   )
