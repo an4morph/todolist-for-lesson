@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { TodoList } from './components/todo-list'
+import { useSelector } from 'react-redux'
 
 const StyledTodolist = styled(TodoList)`
   background-color: pink;
@@ -7,6 +8,8 @@ const StyledTodolist = styled(TodoList)`
 `
 
 function App() {
+  const todos = useSelector(state => state.todo.items)
+
   const getOverdueTodos = () => {
     const today = new Date()
     return todos.filter(
