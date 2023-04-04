@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { TodoList } from '../components/todo-list'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 const StyledTodolist = styled(TodoList)`
   background-color: pink;
@@ -29,6 +30,7 @@ export const HomePage = () => {
   return (
     <div>
       <h1>Todo List</h1>
+      <Link to="/form">Create new todo</Link>
       <StyledTodolist
         title="Overdue"
         items={getOverdueTodos()}
