@@ -1,47 +1,15 @@
-import styled from 'styled-components'
-import { TodoList } from './components/todo-list'
-import { useSelector } from 'react-redux'
-
-const StyledTodolist = styled(TodoList)`
-  background-color: pink;
-  margin-top: 50px;
-`
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { HomePage } from "./pages/home"
+import { FormPage } from "./pages/form"
 
 function App() {
-  const todos = useSelector(state => state.todo.items)
-
-  const getOverdueTodos = () => {
-    const today = new Date()
-    return todos.filter(
-      (todo) => !todo.isDone && new Date(todo.deadline) < today
-    )
-  }
-  const getActualTodos = () => {
-    const today = new Date()
-    return todos.filter(
-      (todo) => !todo.isDone && new Date(todo.deadline) >= today
-    )
-  }
-  const getCompletedTodos = () => {
-    return todos.filter((todo) => todo.isDone)
-  }
-  
   return (
-    <div>
-      <h1>Todo List</h1>
-      <StyledTodolist
-        title="Overdue"
-        items={getOverdueTodos()}
-      />
-      <StyledTodolist
-        title="Actual"
-        items={getActualTodos()}
-      />
-      <StyledTodolist
-        title="Completed"
-        items={getCompletedTodos()}
-      />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/form" element={<FormPage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
