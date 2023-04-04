@@ -16,6 +16,13 @@ export const todoSlice = createSlice({
         }
       })
     },
+    addTodo: (state, action) => {
+      state.items.push({
+        ...action.payload, // {text: '', deadline: ''}
+        isDone: false,
+        id: state.items.length
+      })
+    }
   }
 })
 

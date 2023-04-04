@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { todoFormActions } from "../store/todoFormSlice"
+import { todoActions } from "../store/todoSlice"
 
 const Form = styled.form`
   border: 1px solid black;
@@ -22,8 +23,9 @@ const Form = styled.form`
 
 export const FormPage = () => {
   const { text, deadline } = useSelector(state => state.todoForm.form)
-
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const handleChange = (e) => {
     dispatch(todoFormActions.changeField({
       name: e.target.name,
@@ -31,8 +33,10 @@ export const FormPage = () => {
     }))
   }
 
-  const handleSave = () => {
-
+  const handleSave = (e) => {
+    e.preventDefault()
+    dispatch(todoActions.addTodo({ text, deadline }))
+    navigate('/')
   }
 
   return (
@@ -50,7 +54,7 @@ export const FormPage = () => {
         value={deadline}
         onChange={handleChange}
       />
-      <button onClick={handleSave}>Save todo</button>
+      <button type="submit" onClick={handleSave}>Save todo</button>
     </Form>
     </>
   )
