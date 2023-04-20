@@ -15,3 +15,9 @@ export const startTodolist = [
   { id: 14, text: 'Practice piano', isDone: false, deadline: '2023-06-08' },
   { id: 15, text: 'Cook dinner', isDone: true, deadline: '2023-06-02' }
 ];
+
+
+
+
+
+
